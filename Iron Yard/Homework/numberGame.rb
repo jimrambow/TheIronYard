@@ -16,6 +16,7 @@ higher = true
 lower = true
 answer = rand(100)
 puts "Welcome to the guess the number game! Choose a number (1-100)"
+
 while gameOn != false 
 guess = ""
 guess = gets.chomp.to_i
