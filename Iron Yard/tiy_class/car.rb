@@ -29,13 +29,13 @@ class Car
     self.cupholders = nil
   end
 
-  def display_data
+  def display_data#object method
     p "*" * 100
     p self.model
     "#{self.model} #{self.color} #{self.horsepower} #{self.year} #{self.brand} #{self.mpg} #{self.cupholders}"
   end
 
-  def self.add_car(*car_attributes)
+  def self.add_car(*car_attributes)#.self is a class method
     car = Car.new
     car.model = car_attributes[0]
     car.color = car_attributes[1]

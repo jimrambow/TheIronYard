@@ -14,32 +14,28 @@ class Horses
   attr_accessor :name
   attr_accessor :position
 
-  def initialize
-    self.name = nil
-    self.position = 0
+  def initialize(name, position)
+    @name = nil
+    @position = 0
   end
 
-  def self.add_horse(*horse_variables)
+  def add_horse(horse_variables)
     horse = Horses.new
     
-    horse.name = horse_variables[0]
+    horse.name = @horse_variables[0]
 
     @@list_of_horses.push horse
   end
 
-  def self.get_horses
-  @@list_of_horses
-  end
-
-  def self.add_user(*user_variables)
+  def add_user(user_variables)
     add_user = Horses.new
-    add_user.name = user_variables[0]
+    add_user.name = @user_variables[0]
 
     @@list_of_horses.push add_user
   end
 
 
-  def self.display_data
+  def display_data
     puts "*" * 60
     @@list_of_horses.each do |racer|
         print "-" * racer.position
@@ -47,21 +43,20 @@ class Horses
                            end
   end
 
-  def self.position
-    position += rand(1..5)
+  def move_forward
+    @position += rand(1..5)
   end
 
-  def track
-  track = self.position.times{print"-"}
+
+  def display_horses
+    @@list_of_horses
   end
+end
 
 
 horse1 = Horses.add_horse ("Jackrabbit")
 horse2 = Horses.add_horse ("Pokey")
 horse3 = Horses.add_horse ("Snips")
 user1 = Horses.add_user ("Jim")
-end
 
-
-
-
+Horses.display_data
