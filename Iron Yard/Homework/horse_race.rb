@@ -12,6 +12,7 @@ no_winner = true
 
 class Race 
 
+  attr_accessor :name
   attr_accessor :horses
   attr_accessor :place
 
@@ -23,38 +24,34 @@ class Race
     movement = Horses.track
   end
 
-  def user_hack
-    if Horses.user1
-    
-  end
-  def racers 
- @racers = Horse.get_horses
-    
-  end
-
-  
-end
+  def racers
+    Horses.get_horses
+  end  
 end
 
-while no_winner != false
+Track_length = 60
 
-racing = Race.new
-racing.begin_race
-Horses.display_data
+  while no_winner == true
+system "clear"
+    racing = Race.new
+    racing.begin_race
+    Horses.display_data
+    horse_array = Horses.get_horses
 
-horse_array = Horses.get_horses
+    if gets.chomp == "cheat"
+      racing.racers[3].cheat
+    end
 
-# horse_array.each do |horse|
-#     horse.movement
-
-#                 end
+    horse_array.each do | running_horse |
+      if running_horse.position >= Track_length
+        no_winner = false
+        puts "#{running_horse.name} Wins the race!"
+      end
   
+    racing.racers.each do |racer|
+      racer.move_forward
+    end
 
-racers.each do |racer|
-  racer.move_forward
-            end
-
-break
-
-
+      
+  end
 end
