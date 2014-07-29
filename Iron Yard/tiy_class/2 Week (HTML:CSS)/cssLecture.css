@@ -1,0 +1,68 @@
+*, *:before, *:after { box-sizing: border-box; }
+
+html, body .row, .main, .size1of2 { height: 100%}
+
+body { margin: 0}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+h1 {font-size: 8em; margin-bottom: 0px; margin-top: 0px;}
+h3{font-size: 1.5em; letter-spacing: 0.05rem}
+
+.row{
+  font-size: 0
+}
+
+.full_height{height: 100%}
+
+.size1of2{
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: initial;
+  text-align: center;
+}
+
+.main-content{
+position: relative;
+top: 50%;
+transform: translateY(-50%);
+}
+.main .size1of2:first-of-type {background-color: #22a301; color: #fff;}
+.main .size1of2:last-of-type {background-color: #fff;}
+
+.main-content-header {
+  display: inline-block;
+  border: 5px solid #22a301;
+  color:#22a301;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 8em;
+}
+
+.main-content-header span{
+  display:inline-block;
+  vertical-align: top;
+}
+
+.email{
+  outline: o;
+  border:2px;
+  padding: 5px 10px;
+  font-size: 24px;
+  border-radius: 6px;
+  margin: 0px;
+}
+
+.main-content button{
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  background:#ccc;
+  height: 47px;
+  display:inline-block;
+  border-radius: 5px 0 0 5px;
+  margin: 0px;
+}
