@@ -1,0 +1,11 @@
+<a href="/create_post">Create a new Blog Post!</a>
+<br>
+<% @post.each do |post| %>
+  <a href="/display_post/<%= post.id %>">
+    <%= post.post_title %>
+    <%= post.post_text %>
+  </a>
+  <a href="/edit_post/<%= post.id %>" >Edit</a>
+
+  <br>
+<% end %>

@@ -1,0 +1,15 @@
+<h3>Let's edit a post!</h3>
+<a href="/">Back</a>
+
+
+<form action="/edit_post/<%= @post.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="post_title">You're title wasn't good enough...(Edit post name)
+  </label>
+  <input type="text" id="post_title" name="post[post_title]" value="<%= @post.post_title %>">
+  <br>
+  <label for="post_text">What do you wanna change your mind or something?(Edit post text)</label>
+  <input type="text" id="post_text" name="post[post_text]" value="<%= @post.post_text %>">
+  <br>
+  <input type="submit" value="Edit Contact">
+</form>
