@@ -1,0 +1,19 @@
+<p>Create a menu</p>
+<%= link_to "Create food", new_food_path %>
+<ul> Foods
+  <% @foods.each do |food| %>
+    <li>
+      <%= food.name %> | <%= food.cost %> [ <%= link_to "Edit", edit_food_path(food) %> | <%= link_to "Delete", food_path(food), method: :delete %> ]
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Create Drink", new_drink_path %>
+
+<ul> Drinks
+  <% @drinks.each do |drink| %>
+    <li>
+      <%= drink.name %> | <%= drink.cost %>
+    </li>
+  <% end %>
+</ul>

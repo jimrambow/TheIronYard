@@ -1,0 +1,12 @@
+<h2>Edit Tournament</h2>
+<%= link_to "Back", root_path %>
+
+<%= form_for @tournament do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :description, "Some sweet description" %>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.submit %>
+<% end %>
