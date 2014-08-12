@@ -1,7 +1,6 @@
 = link_to "Back", root_path
 = form_for @hospital do |f|
   - if  f.object.errors.messages.length > 0
-    / Renders errors to user
     - f.object.errors.messages.inspect
     %br/
     - f.object.errors.messages.each do |key, value|
@@ -13,7 +12,7 @@
   = f.label :name
   = f.text_field :name
   %br/
-  = f.label :description, "Provide a brief description of the hospital."
+  = f.label :description, "Describe the Hospital"
   = f.text_field :description
   %br/
   = f.label :capacity

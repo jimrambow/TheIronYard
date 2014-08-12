@@ -1,0 +1,9 @@
+%h1 Vending machine keeper-tracker
+%p Lets keep track of a bunch of Vending machines in different buildings.
+
+= link_to "New Building", new_building_path
+%br
+  - @buildings.each do |building|
+    = building.name
+  %br
+%end
