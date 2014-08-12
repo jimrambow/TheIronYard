@@ -1,0 +1,18 @@
+%h2 List of Facilities
+%table.table
+  %tr
+    %th Name
+    %th Beds
+    %th Description
+    %th
+
+  - @facilities.each do |facility|
+    %tr
+      %td= link_to facility.name, facility_path(facility)
+      %td= facility.bed
+      %td= facility.description
+
+      %td= link_to "Edit", edit_facility_path(facility)
+
+= link_to "Add Facility", new_facility_path
+

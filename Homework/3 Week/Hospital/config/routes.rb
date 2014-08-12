@@ -4,11 +4,30 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'hospital#index'
+  root 'welcome#index'
+
+  #rake routes | grep <route_name>
+  resources :facilities do
+
+    resources :patients do
+
+      member do
+        # put :waiting
+        # put :checkup
+        # put :xray
+        # put :surgery
+        # put :paybill
+        # put :discharge
+        get :transition
+      end
+      resources :medications
+    end
+
+  end
+
   
-  resources :patients
-  #resources :first_name
-  #resources :last_name
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -57,5 +76,5 @@ Rails.application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #end
+  #   end
 end

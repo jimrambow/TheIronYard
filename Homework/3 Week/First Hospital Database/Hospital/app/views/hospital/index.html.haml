@@ -1,0 +1,38 @@
+%h1 Hospital Database
+
+%table
+  %tr
+    %th First Name
+    %th Last Name
+    %th Date of Birth
+    %th Gender
+    %th Description
+    %th Workflow State
+    %th
+    %th
+    %th
+    %th Change State
+
+  - @patients.each do |patient|
+    %tr
+      %td= patient.first_name
+      %td= patient.last_name
+      %td= patient.DOB
+      %td= patient.gender
+      %td= patient.description
+      %td= patient.workflow_state
+      %td= link_to 'Show', patient
+      %td= link_to 'Edit', edit_patient_path(patient)
+      %td
+        = link_to 'Erase', patient, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.workflow_state
+        - if patient.workflow_state != "Paid"
+          = link_to "Pay Bill!", sell_car_car_path(car), method: :put
+        - if !['Have Balance', 'Paid'].include?(patient.workflow_state)
+          = link_to "Reserve!", reserve_car_path(car), method: :put
+        - if !['for_sale', 'sold'].include?(car.workflow_state)
+          = link_to "Reneg!", reneg_car_path(car), method: :put
+
+%br
+%br
+= link_to 'New Patient', new_patient_path

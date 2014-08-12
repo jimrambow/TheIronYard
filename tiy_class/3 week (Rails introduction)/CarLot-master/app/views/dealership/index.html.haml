@@ -1,0 +1,8 @@
+%h1 Dealerships
+
+= link_to "Create", new_dealership_path    
+
+%ul
+  -@dealerships.each do |dealership|
+    %li
+      %strong

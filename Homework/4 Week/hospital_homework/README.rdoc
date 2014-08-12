@@ -1,0 +1,17 @@
+== README
+
+Dudes! You've made it to my readme, and herein will be told how to do teh things
+
+ruby 2.1
+
+you need dat rails, dat workflow, dat haml-rails
+
+gem install rails
+gem install workflow
+etc
+
+do a rake db:create db:migrate from the hospital_homework dir
+
+rails server that noise
+
+localhost:3000 is where the magic happens
