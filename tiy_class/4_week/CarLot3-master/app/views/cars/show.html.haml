@@ -1,0 +1,34 @@
+%p
+  %strong Make:
+  = @car.make
+%p
+  %strong Model:
+  = @car.model
+%p
+  %strong Year:
+  = @car.year
+%p
+  %strong Dealership
+  / = @car.dealership_id
+  - if @car.dealership
+    / @car.dealership
+    = link_to @dealership.try(:name), dealership_path(@dealership)
+
+/ @car.dealership
+= link_to 'Back', dealership_path(@dealership)
+%br
+%ul
+  - @car.comments.each do |comment|
+    - if comment.content
+      %li
+        = comment.content
+        = link_to "[Delete]", delete_comment_dealership_car_path(@dealership, @car, comment_id: comment.id, john_hammond: "not from jurrasic park"), method: :delete
+
+= form_for @comment, url: create_comment_dealership_car_path(@dealership, @car) do |f|
+  = f.label :content
+  = f.text_area :content
+  %br
+  = f.submit
+
+
+
