@@ -1,0 +1,136 @@
+NOTES FROM SENSEI ABOUTA JAVASCRIPTA
+
+ALL THESE NOTES ARE IN CARS.JB IN NICKS NOTES
+
+since we're starting to learn javascrip we are going to get rid of turbolinks in application.js, remove from gem file (comment out), and in application layout in stylesheet tag and javascript tag
+
+re-bundle install.
+
+*******************************
+EVENTS
+
+= link_to "hide image 1", "javascript:void(0);", class: "hide_image_1"
+= link_to "show image 1", "javascript:void(0);", class: "show_image_1"
+
+= link_to "hide image 2", "javascript:void(0);", class: "hide_image_2"
+= link_to "show image 2", "javascript:void(0);", class: "show_image_2"
+
+then write a selector
+$(".hide_image_1").click( fuction(){
+  console.log("Hello world");
+  $(".image_1").hide(); 
+
+  to hide the image! 
+
+  "Where we changed the ferrari image name to image_1"
+   
+})
+
+$(".show_image_1").click(function(){
+  $(".image_1").show();
+})
+
+To show the image!
+
+
+One link that hides both or shows both (toggles the pictures to be shown or hidden)
+
+= link_to "toggle all images", "javascript:void(0);", class: "toggle_images"
+
+$(".toggle.images").click(function(){
+  $(".toggle_images").toggle();
+})
+*******************
+if condtion
+  do stuff
+end
+*******************
+if (condtion){
+  do stuff
+}
+
+Thats javascript the form for if checks.
+
+$(".image_1.").hover(fuction(){
+  
+})
+
+many issues will stem from selectors which are things like btn btn-sm btn-danger add_student
+
+.val() is anything inside of a form element
+
+.append() adding something to the end of something. Selecting students list and adding something to the end of it
+
+JQUERY SELECTORS
+
+
+//SUDO SELECTORS
+$("li:first") will give the first li element on the page
+$("li:last")
+$(".car_image:visible") 
+$(".car_image:hidden")
+
+//MULTIPLE SELECTORS
+
+to select multiple things I use a comma
+$(".car_image, a.add_student")
+
+//CHILDREN COMMENTS
+
+$("ul.students_list li")
+$("ul.students_list li:first")
+
+//DIRECT DESCENDENT OPPERATOR
+
+$("ul.fruit > li") shows only the first 
+
+= select_tag '', options_for_select(['fuji', 'macintosh', 'crab', 'granny smith']), class: "hidden"
+
+.removeClass('hidden').toggle()
+
+Call methods on objects 
+
+//Goes UP the Tree
+.closest finds the element above it
+
+//goes DOWN the tree
+.container
+
+.not excludes something from the list
+
+//HTML Elements
+.attr("class") use to find what kind of attribute it is
+
+
+$(document).ready(fuction(){
+  //jquery selector
+  //Dom - Document object model
+
+THE REST OF YOUR JS IS WRITTEN IN HERE
+
+})
+
+how to make an event force happen
+
+$(".hide_image_2").click()
+
+//MANIPULATING HTML
+
+we used append and remove
+$("li.apple").append("<li>Mangos</li>")
+prepend wil make something go do the front of the li
+.html will change everything in that element
+.empty will clear a list of stuff
+
+.this is commonly used in 
+
+$("li").click(function(){
+  console.log(this)
+})
+This code will allow everything to be clickable that is an Li 
+
+
+
+
+DOM DOCUMENT OBJECT MODEL (ITS WHATS ON THE WEBSITE)
+BEST PRACTICE IS TO SUFFIX YOUR HTML TAG WITH YOU SELECTOR

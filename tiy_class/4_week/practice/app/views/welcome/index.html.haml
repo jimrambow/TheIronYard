@@ -3,7 +3,14 @@
 
 = link_to "New Building", new_building_path
 %br
-  - @buildings.each do |building|
-    = building.name
-  %br
-%end
+  %div
+    %ul
+      %li
+        - @buildings.each do |building|
+          = link_to building.name, building_path(building)
+          = link_to "Edit", edit_building_path(building)
+          = link_to "Delete", building_path(building), method: :delete
+        %br
+        %end
+    
+

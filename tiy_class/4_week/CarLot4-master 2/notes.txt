@@ -1,0 +1,128 @@
+# module ApplicationHelper
+#   def 
+    
+#   end
+# end
+
+
+# .each only calls the items doesnt print them out
+# .map calls each item and prints it out with the addition of the .map { |obj|  } method
+# .collect is the same as .map
+
+A method can be written inside of of the models files to be used as heler methods.
+user authentication
+  gem devise is what you use
+    very well documented
+    make sure you bundle install after adding the gem
+    rails generate devise:install
+
+  Then there is manual setup
+    copy and past the config.action_mailer line
+
+    make sure you have flash messages in layout
+    in layouts check for flash messages if not add the lines of code they give you anywhere before yeild 
+    if you are deploying heroke add this line and it tells you where to set the file line
+
+      then rails g devise:views
+      
+
+      Generates entire form for you in devise folder under registrations
+
+      then rails generate devise model in this situation user
+      rails generate devise user
+
+Controllers Filters and Helpers
+  before_action :authenticate_user!
+  add this to all controllers (This will make all pages unviewable until we are a user)
+
+  will force you to sign in now and you can create a user
+  in layouts make 
+
+  =link_to "log in", new_user_session_path
+  =link_to "log out", destroy_user_session_path method: :delete
+
+  can put this is in your ApplicationHelper to make it show up on every page and make it simple
+
+  Lets add first and last name for the user
+
+  rail g migration add_first_name_and_last_name_to_users first_name :string, last_name :string
+  rake db:migrate
+
+  STRONG PARAMETERS DONE IN APPLICATIONCONTROLLER
+
+  follow instuctions in the readme file for devise about def configure_permitter_parameters
+
+  Lets edit our account
+      link_to "edit", edit_user_registration_path
+
+  devise update for account
+    devise_parameter_sanatizer_for
+
+
+Asset Pipeline
+
+Rails has the asset Pipeline and it saves all your assets.
+  
+  stylesheet_link_tag has a single css file it reads that file and comiles it down into one file and runs.
+
+  .scss is sassy css 
+  not important right now it is the equivalent of haml for html 
+
+  require bootstrap.min 
+  require_tree - requires all the files that are inside the stylesheets folder
+  require_self - includes the controller inside this file. (where bootstrap.min is)
+
+  Right now the asset Pipeline is only for bootstrap at the moment. 
+
+What we are going to do from now on is use our separate stylesheets for each page AND GET RID OF THE .SCSS shortcut off the file type
+
+Images!
+
+any images you want to include you would put inside images folder inside of assets. You can you any type of file.
+
+in your website you can use /assests/imagename and it will show up, will require subfolders if you add them so if we had cars it would be assets/cars/imagename.
+
+= image_tag '/assets/ferrari_gto.jpeg'
+= image_tag 'ferrari_gto.jpeg' (will also work because its only looking for images in your asset pipeline)
+
+= image_tag '/assets/ferrari_gto.jpeg' class 
+
+in css if you only declare a height or width it will make it have a natural resolution
+
+= require turbolinks is pain in ass (will learn more later)
+
+in javascripts under assets
+in cars
+  var x = "Hello World";
+  var number = 1;
+  var number2 = 2;
+
+  Semicolons not required but good common practice
+
+  console.log(number + number2);
+
+  in javascript you always have to have parameters. ALWAYS!
+
+  everything in jquery always uses a $ to call where it is. 
+  jQuery('.car_image')
+  Will show anything that has an image attached to it.
+  could also be written as 
+  $('.car_image')
+
+  $('a').remove() completely would delete all of your a href files but will not change your script just what happens to your page, if you refresh it will work again.
+
+Turbolinks is a pain in the ass because it changes how we write jQuery. 
+
+fuction loadJavascripts{
+  console.log($('body'))
+  console.log($('.car_image'))
+}
+
+$(document).on("page:ready", loadJavascripts)
+$(document).ready(loadJavascripts)
+
+DOM- Document Object Model
+
+HOMEWORK:
+User authentication for your hospital.
+

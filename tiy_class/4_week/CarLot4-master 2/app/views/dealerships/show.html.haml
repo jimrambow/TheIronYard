@@ -1,0 +1,38 @@
+%h1 Show Dealership
+%strong
+  Name:
+= @dealership.name
+%br
+%strong
+  Description
+= @dealership.description
+%br
+= link_to "Create Car", new_dealership_car_path(@dealership)
+%ul
+  /= @dealership.cars.inspect
+  - @dealership.cars.each do |car|
+    %li
+      = link_to "#{car.make} | #{car.model}", dealership_car_path(@dealership, car)
+      |
+      = link_to "Edit", edit_dealership_car_path(@dealership, car)
+      |
+      = link_to "Delete", dealership_car_path(@dealership, car), method: :delete
+
+%br
+= link_to "Back", dealerships_path
+%br
+Comments
+%br
+%ul
+  - @dealership.comments.each do |comment|
+    - if comment.content
+      %li
+        = comment.content
+        = link_to "[Delete]", delete_comment_dealership_path(@dealership, comment_id: comment.id), method: :delete
+
+= form_for @comment, url: create_comment_dealership_path(@dealership) do |f|
+  = f.label :content
+  = f.text_area :content
+  %br
+  = f.submit
+

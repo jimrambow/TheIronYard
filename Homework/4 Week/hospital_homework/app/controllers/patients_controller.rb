@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_patient, only: [:show, :edit, :update, :destroy, :to_billing, :to_waiting, :to_xray, :leave, :see_doctor, :to_surgery]
   before_action :find_hospital
   def new
