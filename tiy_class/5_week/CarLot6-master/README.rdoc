@@ -1,0 +1,8 @@
+gem install html2haml
+
+for file in app/views/**/*.erb; do html2haml -e $file ${file%erb}haml && rm $file; done
+
+- helper files
+- model methods
+- user authentication (devise)
+- starting asset pipeline

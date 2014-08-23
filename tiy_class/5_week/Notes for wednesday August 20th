@@ -1,0 +1,89 @@
+Notes for wednesday August 20th
+
+**********************
+
+Review on JS and JQuery
+
+w3 schools has instances of code that show you how it works.
+
+jquery.com api documentation for all methods to call.
+
+**********************
+LIVE EVENTS!
+The reason we disabled turbolinks is because it renders the 
+
+Live events change the entirety of the document
+
+such as
+
+$(document).on( 'click', '.bro', function(){
+  $(this).css("background-color", "red")
+})
+
+This is changing the class .bro to make it when its clicked to turn red.
+
+$(".add_bro").click(function(){
+  var newName = $(".bro_name").val()
+  $(.bros).append("<h1 class='bro'>", + newName + "</h1>")
+})
+
+
+***********************
+AJAX
+
+Think of making an ajax event as a controller and the js being your view.
+
+action javascript and xml
+
+first thing to do is make an event
+= link_to "Get Cars", "javascript:void(0);",class: "get_cars"
+
+$(".get_cars").click(function(){
+  $.ajax({
+  url: "/dealership/1/cars",
+  type: GET,
+  dataType: "script"
+  })
+})
+
+respond_to do |format|
+  format.js
+  format.html
+  
+end
+
+HOW TO RE_RENDER IN JAVASCRIPT
+
+go make new index.js.erb in cars
+
+<% @cars.each do |car| %>
+  $("ul.cars").append("<li><%= car.make %></li>")
+<% end %>
+
+= text_field_tag '', '', class: "car_search"
+****
+$(".search_cars").click(function({
+  $.ajax({
+  url: "/cars",
+  dataType: "script",
+  type: GET,
+  data: {q: $('.car_search').val()}
+  })
+})
+)
+
+Cars.where("make LIKE ?", "%#{params[:q]}")   % is the wildcard command for JS
+
+def search_cars
+
+respond_to do |format| 
+  format.js
+
+  new view call it search_cars.js.erb
+
+now we need to render our array of cars 
+
+%ul.search_list
+ @cars.each do |car| 
+  $("ul.search_list").append("<li><%= car.make %></li>")
+end 
