@@ -15,4 +15,5 @@
   = f.label :description, "Place dosing information!"
   = f.text_field :description
   %br/
-  = f.submit "Save Prescription"
+  = f.submit "Save Prescription", disabled: "disabled", class: "submit"
+  %div.notice

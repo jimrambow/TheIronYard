@@ -1,0 +1,4 @@
+- available_states(@submission).each do |key, value|
+  / %button.btn.btn-default{:type => "button"} Default
+  / = "#{workflow_button_style(key)}"
+  = link_to value, "javascript:void(0)", event: key, class: "btn #{workflow_button_style(key)}"

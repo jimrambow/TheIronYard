@@ -22,28 +22,30 @@
               %a{:href => "hospital_path"} Hospitals
           
         / /.nav-collapse
+
         .pull-right
           = user_login_links
     .container
       .starter-template
-        %br
-        %br
-        %br
-        %br
-        %h1 JRHS - Tomorrow's health care, today!
-        %p.lead
-          Feel free to browse our database of human test subjects...err...patients...
+        %center
+          %br
+          %br
+          %br
+          %br
+          %h1 JRHS - Tomorrow's health care, today!
+          %p.lead
+            Feel free to browse our database of human test subjects...err...patients...
 
         
     / /.container
-
-  #user_nav
-  - if user_signed_in?
-    Signed in as #{current_user.email}. Not you?
-    \#{link_to "Sign out", destroy_user_session_path, :method => :delete}
-  - else
-    = link_to "Sign up", new_user_registration_path
-    or #{link_to "sign in", new_user_session_path}
+  %center
+    #user_nav
+    - if user_signed_in?
+      Signed in as #{current_user.email}. Not you?
+      \#{link_to "Sign out",  destroy_user_session_path, :method => :delete}
+    - else
+      = link_to "Sign up", new_user_registration_path
+      or #{link_to "sign in", new_user_session_path}
     
   %p.notice= notice if notice
   %p.alert= alert if alert

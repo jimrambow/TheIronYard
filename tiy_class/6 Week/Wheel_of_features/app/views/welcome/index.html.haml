@@ -1,0 +1,6 @@
+= link_to 'Features', features_path
+/ %embed{src: "/assets/tick_sound.mp3"}
+= link_to "SPIN THE WHEEL OF DOOM!", "javascript:void(0);", class: "spin_the_wheel btn btn-primary"
+%ul.features
+  - @features.each_with_index do |feature, index|
+    %li.feature{class: "feature_#{index}"}= feature.name

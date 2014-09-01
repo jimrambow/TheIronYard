@@ -18,14 +18,13 @@
       |
       %a.btn.btn-xs.btn-danger{:href => hospital_path(hospital), method: :delete, :type => "button"} Delete
       / = link_to "Delete", hospital_path(hospital), method: :delete
-      %br
-      %br
-
-      %br
-      %a.btn.btn-s.btn-success{:href => new_hospital_path,      :type => "button"} New Hospital
-      
-      %a.btn.btn-s.btn-primary{:href => root_path, :type =>      "button"} Home
-      
-      %a.btn.btn-s.btn-danger{:href =>       destroy_user_session_path, method: :delete, :type =>      "button"} Sign out
+  %br
+  %br
+  %br
+  %a.btn.btn-s.btn-success{:href => new_hospital_path,      :type => "button"} New Hospital
+  %br
+  %a.btn.btn-s.btn-primary{:href => root_path, :type =>      "button"} Home
+  %br
+  %a.btn.btn-s.btn-danger{:href =>       destroy_user_session_path, method: :delete, :type =>      "button"} Sign out
 
 / = link_to "Back", root_path

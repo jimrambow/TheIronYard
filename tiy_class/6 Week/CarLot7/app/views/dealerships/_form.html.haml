@@ -1,0 +1,14 @@
+= form_for @dealership do |f|
+  = f.label :name
+  = f.text_field :name
+  %br
+  = f.label :description
+  = f.text_field :description
+  %br
+  = f.submit "Submit", disabled: 'disabled'
+
+%br
+= text_field_tag '', '', class: "bro_name"
+= link_to "Add Bro", 'javascript:void(0);', class: "add_bro"
+.bros
+  %h1.bro Toby

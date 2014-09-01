@@ -4,12 +4,12 @@
 
 %table
   %tr
-    %th Name
-    %th Gender
-    %th DoB Y/M/D
-    %th Status
-    %th Change Status
-    %th Tasks
+    %th [Name]
+    %th [Gender]
+    %th [Date of Birth Y/M/D]
+    %th [Status]
+    %th{:width => "20px"}  [Change Status]
+    %th [Tasks]
 
   - @hospital.patients.each do |patient|
     %tr
