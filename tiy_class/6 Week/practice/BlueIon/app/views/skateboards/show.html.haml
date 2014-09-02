@@ -1,0 +1,27 @@
+.row
+  .small-12.columns.skateboard_show
+    %h3.name
+      = @skateboard.name
+    .small-6.columns.image
+      .img.skateboard
+        = image_tag @skateboard.image
+    .small-6.stats
+      %h4.stats
+        Size:
+        %br
+          = @skateboard.size
+        %br
+        Description:
+        %br
+          = @skateboard.description
+        %br
+        Price:
+        %br
+          = @skateboard.retail_price
+
+      -if current_user
+        %br
+        %br
+          = link_to "Edit", edit_skateboard_path(@skateboard)
+        %br
+          = link_to "Remove From Inventory", skateboard_path(@skateboard), method: :delete

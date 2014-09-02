@@ -1,0 +1,340 @@
+
+body{
+  background-image: url(backgroundskater.jpg);
+  font-family: 'Droid Sans', sans-serif;
+}
+.small-6.columns.admin_login_link{
+  float:right;
+}
+ul.skateboard_info{
+  margin: 0px;
+}
+h3.info{
+  text-decoration:  none;
+  color: #535353;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 19px;
+  border-bottom: 2px solid lightgrey;
+}
+.img.skateboard{
+  display: block;
+  padding-top: 3px;
+}
+h3.name{
+  background-color: white;
+  color: #535353;
+  text-align: center;
+  padding-top: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.small-12.column.forms{
+  background-color: rgba(248, 248, 258, .3);
+}
+
+input.radius.button.left{
+  background-color: #E40000;
+  width: 60%;
+}
+
+.input{
+  max-width: 40%;
+  margin-left: 30px;
+  color: black;
+  font-size: 19px;
+  font-weight: normal;
+}
+.label{
+  color: black;
+}
+a.admin_login_link{
+  float: right;
+  color: white;
+}
+input.radius.button.right{
+  background-color: #E60000;
+  border-radius: 0px;
+  height: 40px;
+  width: 60%;
+  text-align: center;
+  line-height: 5px;
+}
+a.subscribe_link{
+  color: #f8f3ee;
+  margin-top: 20px;
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 13px;
+}
+a.read_more{
+  color: #E60000;
+}
+
+.contact_us{
+  font-size: 16px;
+  font-weight: 300;
+
+}
+
+div.read_more{
+  text-align: center;
+}
+a.button{
+  margin-right: 10px;
+  background-color: #E40000;
+  height: 28px;
+  width: 232px;
+  line-height: 5px;
+  font-weight: lighter;
+  margin-bottom: 0px;
+  
+}
+a.button_facebook:hover{ 
+    position: relative; top: -5px;
+}
+a.button_rss:hover{
+  position: relative; top: -5px;
+}
+
+a.button_twitter:hover{
+  position: relative; top: -5px;
+}
+
+a.button_you_tube:hover{
+  position: relative; top: -5px;
+}
+
+h2.login_form{
+  background-color: ;
+  max-width: 40%;
+  margin-left: 30px;
+  color: black;
+  font-size: 19px;
+  font-weight: normal;
+}
+  
+a.button:hover{
+  background-color: #ff0000;
+  font-weight: normal;
+}
+h4{
+  margin-top: 24px;
+  color: #535353;
+}
+.small-1.columns.dots_line{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.small-3.small-offset-1.columns.news_blocks{
+  background-color: white;
+  width: 30%;
+  height: 10%;
+  border-bottom: 4px solid rgba(8,8,8, .5);
+}
+
+.small-offset-1{
+  margin-left: 3.25% !important;
+}
+
+.small-3.columns.submit{
+  float: right;
+}
+.small-4.columns.subscribe{
+  margin-top: 20px;
+
+}
+.small-12.columns.navlinks{
+  float: none;
+  margin-bottom: 100px;
+  background-color: red;
+
+}
+.small-4.columns.social_media{
+  text-align: right;
+  margin-top: 10px;
+  padding: 0px;
+  float: right;
+
+}
+.small-4.columns.contact{
+  width: 50%;
+  float: none;
+  margin: 0px;
+}
+li.active{
+  border-bottom: 4px solid rgba(248,248,248, .5);
+}
+
+ul.social_media.button-group{
+  margin-bottom:
+  50px;
+}
+.panel{
+  background-color: white;
+  height: 375px;
+  margin-top: 50px;
+  border-bottom: 4px solid rgba(8,8,8, .5);
+}
+.dot{
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+.dots{
+  width: 4px;
+  margin-left: 10px;
+  height: 4px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 2px;
+}
+img.skateboarder{
+  border-bottom: 4px solid rgba(248,248,248, .5);;
+}
+p.date{
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: #535353;
+}
+p.news_intro{
+  color: #535353;
+  margin-bottom: 5px;
+  font-size: 14px;
+  padding: 7px;
+}
+/*a{
+  color: white;
+  padding-left: 5%;
+  }*/
+a:hover{
+  color: red;
+}
+
+.contact_form{
+  width: 1000px;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul.button-group li{
+  border-left: 1px;
+}
+
+table{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border-spacing: 5px;
+    border-color:transparent;
+    border-width:5px;
+    background-color: transparent;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+
+th{
+    height: 90px;
+/*    border-color:transparent;*/
+}
+.small-12.columns.boards_display:hover{
+  box-shadow: 0px 0px 10px 1px #FFFFFF
+}
+.skateboard.show{
+  background-color: #FFFFFF;
+
+}
+#Lance{
+  background-image:url('/assets/Lance_1.png');
+  margin: 0px;
+  background-repeat: no-repeat;
+}
+#Lance:hover{
+  background-image: url('/assets/Lance_2.png');
+}
+
+#Rodney{
+  background-image:url('/assets/Rodney_1.png');
+  background-repeat: no-repeat;
+}
+#Rodney:hover{
+  background-image:url('/assets/Rodney_2.png');
+  background-repeat: no-repeat;
+}
+#Tommy{
+  padding:20px 20px 20px 20px;
+  height: 500px;
+  background-image: url('/assets/Tommy_1.png');
+  background-repeat: no-repeat;
+}
+#Tommy:hover{
+  padding:20px 20px 20px 20px;
+  background-image: url('/assets/Tommy_2.png');
+  background-repeat: no-repeat;
+}
+
+#Steve{
+  padding:20px 20px 20px 20px;
+  height: 110px;
+  background-image: url('/assets/Steve_1.png');
+  background-repeat: no-repeat;
+
+}
+#Steve:hover{
+  padding:20px 20px 20px 20px;
+  background-image: url('/assets/Steve_2.png');
+  background-repeat: no-repeat;
+}
+
+/*img.board{
+  padding-left: 12.5px;
+  padding-right: 12.5px;
+}*/
+.small-12.columns.boards_display{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  margin-top: 30px;
+  border-bottom: 4px solid rgba(0,0,0, .2);
+  max-width: 958px;
+  margin-left: 2%;
+}
+.small-12.columns.skateboard_show{
+  background-color: white;
+}
+
+.small-6.stats{
+  display:inline-block;
+}
+.small-4.small-offset-1.columns.skateboard_tile.end{
+  background-color: white;
+  width: 29%;
+  height: 350px;
+  margin-bottom: 40px;
+  border-bottom: 4px solid rgba(0,0,0, .5);
+}
+
+h3.forms{
+  color: black;
+  font-weight: lighter;
+  padding: 4%;
+}
+.input.contact_form{
+  width: 300px;
+  margin: 0px;
+}
+#contact_name, #contact_email, #contact_subject, #contact_message{
+  width: 200%;
+
+}
+h4.stats{
+  display: inline-block;
+}
+
+
+
+

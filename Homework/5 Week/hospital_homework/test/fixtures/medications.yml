@@ -2,10 +2,6 @@
 
 one:
   name: MyString
-  description: MyText
-  patient_id: 1
 
 two:
   name: MyString
-  description: MyText
-  patient_id: 1

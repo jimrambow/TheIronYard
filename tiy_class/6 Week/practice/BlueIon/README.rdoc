@@ -1,0 +1,16 @@
+== README
+
+
+
+ADMIN LOGIN:
+
+username:  rick@blueion.com
+password:  rubyrocks
+
+This will allow the user to add new skateboards to inventory, edit current inventory, and delete inventory.  
+
+
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

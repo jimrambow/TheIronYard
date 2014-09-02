@@ -1,31 +1,38 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :hospitals do
-    member do
-      post :create_doctor
-      delete :delete_doctor
-    end
-    resources :patients do
-      member do
-        put :to_billing
-        put :see_doctor
-        put :to_surgery
-        put :to_waiting
-        put :to_xray
-        put :leave
-        get :transition
-        post :create_doctor
-        delete :delete_doctor
-      end
-      resources :medications do
-      end
-    end
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+root 'home#index'
+
+get '/patients' => 'patients#search_patients'
+
+resources :hospitals do
+  
+  member do
+    post :create_doctor
+    delete :delete_doctor
+  end
+
+
+  resources :patients do
+    
+      member do
+        post :create_doctor
+        delete :delete_doctor
+        put :wait
+        put :check
+        put :xray
+        put :scalpel
+        put :charge
+        put :discharge
+      end
+      
+      resources :medications
+
+  end
+end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,74 @@
+!!!
+/[if IE 9] <html class="lt-ie10" lang="en" >
+%html.no-js{"data-useragent" => "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)", :lang => "en"}
+  %head
+    %link{:href => "http://fonts.googleapis.com/css?family=Droid+Sans:400,700", :rel => "stylesheet", :type => "text/css"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title BlueIon
+    %meta{:content => "Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.", :name => "description"}/
+    %meta{:content => "ZURB, inc. ZURB network also includes zurb.com", :name => "author"}/
+    %meta{:content => "ZURB, inc. Copyright (c) 2013", :name => "copyright"}/
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags 
+    = javascript_include_tag "vendor/modernizr"
+  %body
+    .row
+      .small-12.columns.header
+        .small-4.columns.blank
+          &nbsp;
+        .small-2.columns.subscribe
+          = link_to "SUBSCRIBE",subscribers_path, class: "subscribe_link"
+          %div.dot
+        
+        .small-4.columns.social_media
+
+          %ul.social_media.button-group
+            %li
+              .small-1.columns.dots_line
+                %div.dots
+                %div.dots
+                %div.dots
+                %div.dots
+              %a.button_facebook{:href => "https://www.facebook.com/"}
+                %img{src:"/assets/facebook_image.jpg"}
+              %a.button_rss{:href => "http://techcrunch.com/rssfeeds/"}
+                %img{src:"/assets/rss_feed.jpg"}
+              %a.button_twitter{:href => "https://twitter.com/"}
+                %img{src:"/assets/twitter.jpg"} 
+              %a.button_you_tube{:href => "https://www.youtube.com/"}
+                %img{src:"/assets/you_tube.jpg"} 
+        %h1
+      .small-12.columns.navlinks
+        %ul.right.button-group.nav
+          %li
+            %a.button{:href => "/#news"} - SK8T NEWS -
+          %li
+            %a.button{:href => "/#skateboarders"} - SKATEBOARDERS -
+          %li
+            %a.button{:href => "/#boards"} - BOARD DESIGN -
+          %li
+            %a.button{:href => "/#contact"} - CONTACT US -
+    %p.notice= notice if notice
+    %p.alert= alert if alert
+    = yield
+    %footer.row
+      .small-12.columns
+        %hr/
+        .row
+          .small-6.columns
+            %p 
+              &copy
+          .small-6.columns.admin_login_link
+            = link_to "Admin", user_session_path, class: "admin_login_link"
+            = login_links
+
+
+    %script{:src => "../assets/js/jquery.js"}
+    %script{:src => "../assets/js/templates/foundation.js"}
+    :javascript
+      $(document).foundation();
+
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);

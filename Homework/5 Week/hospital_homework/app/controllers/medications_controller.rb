@@ -1,56 +1,65 @@
 class MedicationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_patient
-  before_action :find_hospital
-  before_action :find_medication, only: [:show, :edit, :update, :destroy]
+  
+  def index
+    @medications = Medication.all
+    @patient = Patient.find params[:patient_id]
+  end
+
+  def show
+    @patient = Patient.find params[:patient_id]
+    @hospital = Hospital.find params[:hospital_id]
+    @medication = Medication.find params[:id]
+  end
 
   def new
     @medication = Medication.new
+    @patient = Patient.find params[:patient_id]
+    @hospital = Hospital.find params[:hospital_id]
   end
 
   def create
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = Patient.find params[:patient_id]
+
     @medication = @patient.medications.new(medication_params)
-    if @medication.save == true
-      redirect_to hospital_patient_path(@hospital, @patient)
-    else
-      render :new
+      respond_to do |format|
+      if @medication.save
+        format.html { redirect_to hospital_patient_path(@hospital, @patient), notice: 'Medication prescribed!' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
   def edit
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = Patient.find params[:patient_id]
+    @medication = Medication.find params[:id]
   end
 
   def update
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = Patient.find params[:patient_id]
+    @medication = Medication.find params[:id]
     if @medication.update_attributes medication_params
-      redirect_to hospital_patient_path(@hospital, @patient)
-    else 
+      redirect_to hospital_patient_path(@hospital, @patient) 
+    else
       render :edit
-    end  
-  end
-
-  def show 
+    end
   end
 
   def destroy
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = Patient.find params[:patient_id]
+    @medication = Medication.find params[:id]
     @medication.delete
     redirect_to hospital_patient_path(@hospital, @patient)
   end
 
+  private
 
-private
-  def find_patient
-    @patient = Patient.find params[:patient_id]
-  end
-
-  def find_hospital
-    @hospital = Hospital.find params[:hospital_id]
-  end
-
-  def find_medication
-    @medication = Medication.find params[:id]
-  end
-  
   def medication_params
-    params.require(:medication).permit(:name, :description)
+    params.require(:medication).permit(:name)
   end
 end

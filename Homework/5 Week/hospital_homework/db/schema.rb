@@ -11,40 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818175317) do
+ActiveRecord::Schema.define(version: 20140818181924) do
 
   create_table "doctors", force: true do |t|
-    t.string   "name"
-    t.string   "speciality"
+    t.text     "dr_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "doctorable_type"
-    t.integer  "doctorable_id"
+    t.string   "treatable_type"
+    t.integer  "treatable_id"
   end
 
   create_table "hospitals", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "capacity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "medications", force: true do |t|
     t.string   "name"
-    t.text     "description"
-    t.integer  "patient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "patient_id"
   end
 
   create_table "patients", force: true do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "dob"
+    t.text     "reason"
     t.string   "gender"
-    t.date     "birth"
-    t.text     "diagnosis"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "Waiting"
+    t.string   "Checkup"
+    t.string   "Xrays"
+    t.string   "Surgery"
+    t.string   "Paying"
+    t.string   "Leaving"
     t.string   "workflow_state"
     t.integer  "hospital_id"
   end

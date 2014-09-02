@@ -1,0 +1,20 @@
+= form_for [@skateboard], :html => { :multipart => true } do |f|
+  - if @skateboard.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@skateboard.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @skateboard.errors.full_messages.each do |msg|
+          %li= msg
+
+  .input
+
+    = f.text_field :name, :placeholder => "Name"
+    = f.text_field :size, :placeholder => "Size"
+    = f.text_field :description, :placeholder => "Description"
+    = f.text_field :retail_price, :placeholder => "Retail Price"
+    = f.label :image
+    = f.file_field :image
+    %br
+    %br
+
+    = f.submit "SUBMIT", class: "radius button left"

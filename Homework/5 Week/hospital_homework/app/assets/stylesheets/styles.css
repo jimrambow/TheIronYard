@@ -1,0 +1,32 @@
+body {
+
+background-color: transparent;
+background-image: url("images/aperature.jpg");
+text-align: left;
+border-collapse: separate;
+}
+
+h1 {
+
+
+list-style-type: none;
+border-collapse: separate;
+
+}
+
+ul {
+
+list-style-type: none;
+border-collapse: separate;
+}
+
+.notice{
+
+font-size: larger;
+font-weight: thick;
+color: red;
+}
+
+.hidden {
+ display: none;
+}

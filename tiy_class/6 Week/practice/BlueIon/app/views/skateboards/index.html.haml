@@ -1,0 +1,12 @@
+.row.collapse
+  - @skateboards.each do |skateboard|
+    .small-4.small-offset-1.columns.skateboard_tile.end
+      %ul.skateboard_info
+        %h3.info
+          = "#{skateboard.name}"
+        = link_to skateboard_path(skateboard) do
+          = image_tag skateboard.image
+  
+
+- if current_user
+  = link_to "Add", new_skateboard_path

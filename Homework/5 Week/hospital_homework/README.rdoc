@@ -1,12 +1,28 @@
-I want you to add validation on the hospital name, patient name, and the medication name in Rails.
+== README
 
-For jQuery, I want you to validate the forms in real-time. If the name isn't filled out, you need to disable the form and display a message somewhere on the page telling the user that the names are required. If the name is filled out, you need to remove the verbiage, and enable the button.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-I also want you to have your flash messages fade out over time. For example, when you save a patient, hospital, or medication you should have a flash message. So, when this message is displayed, you need to fade it out over a few seconds.
+Things you may want to cover:
 
-I want you to paginate your pages as well. Group your patients/hospitals/medications up in groups of 10. Anything more then 10, create a new group. If you have 3 groups of patients, you should have 3 links at the bottom for each page: 1 | 2 | 3. Pagination! (Check out the each_slice method in Ruby). You may want to use your seed file to populate your database. (db/seeds.rb)
+* Ruby version
 
-***************************************************
-Create a search for your patients in each hospital. When you search, it shouldn't redirect to a search page. It should re-render the list of patients with the new list.
+* System dependencies
 
-Convert your workflow links to AJAX put requests.
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

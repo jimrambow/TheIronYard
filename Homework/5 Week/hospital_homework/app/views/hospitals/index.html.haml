@@ -1,30 +1,17 @@
-%h1 Hospitals in same healthcare system
+%h1 Jim Rambow Laboratories
 
-/ = link_to "Create Hospital", new_hospital_path
-%ul
-  - @hospitals.each do |hospital|
+
+= button_to "Add a new hospital to the Jim Rambow HealthCare System..", new_hospital_path, class: "hosp_link", method: :get
+%ul.hospital_list
+  - @hospital.each do |hospital|
     %li
       %strong
         = link_to hospital.name, hospital_path(hospital)
-      | 
-      %strong
-        Max Capacity:
-      = hospital.capacity
-      |
       = hospital.description
       |
-      %a.btn.btn-xs.btn-info{:href => edit_hospital_path(hospital), :type => "button"} Edit
-      / = link_to "Edit", edit_hospital_path(hospital)
+      = link_to "Edit", edit_hospital_path(hospital)
       |
-      %a.btn.btn-xs.btn-danger{:href => hospital_path(hospital), method: :delete, :type => "button"} Delete
-      / = link_to "Delete", hospital_path(hospital), method: :delete
-  %br
-  %br
-  %br
-  %a.btn.btn-s.btn-success{:href => new_hospital_path,      :type => "button"} New Hospital
-  %br
-  %a.btn.btn-s.btn-primary{:href => root_path, :type =>      "button"} Home
-  %br
-  %a.btn.btn-s.btn-danger{:href =>       destroy_user_session_path, method: :delete, :type =>      "button"} Sign out
+      = link_to "Delete", hospital_path(hospital), method: :delete
 
-/ = link_to "Back", root_path
+%br
+= link_to "Back", root_path

@@ -1,58 +1,105 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_patient, only: [:show, :edit, :update, :destroy, :to_billing, :to_waiting, :to_xray, :leave, :see_doctor, :to_surgery]
-  before_action :find_hospital
-  def new
-    @patient = Patient.new
-  end
-  def create
-    @patient = @hospital.patients.new(patient_params)
-    if @patient.save == true
-      redirect_to hospital_path(@hospital)
-    else
-      render :new
+  before_action :find_patient, only: 
+         [:show, :edit, :update, :destroy, :discharge, :wait,
+          :check, :xray, :scalpel, :charge]
+
+# .page(params[:page]).per(10)
+  def search_patients
+    @patients = Patient.where("last_name LIKE ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
     end
   end
-  def edit
 
+
+  def index
+    @patients = Patient.all
+    @hospital = Hospital.find params[:hospital_id] if params [:hospital_id] != 'search'
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
-  def update
-    if @patient.update_attributes patient_params
-      redirect_to hospital_path(@hospital)
-    else 
-      render :edit
-    end  
-  end
+
   def show
-    @doctor = @hospital.doctors.new
+    @patients = Patient.all.page(params[:page]).per(10)
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = Patient.find params[:id]
+    @doctor = @patient.doctors.new
   end
+
+  def new
+    @patient = Patient.new
+    @hospital = Hospital.find params[:hospital_id]
+  end
+
+  def create
+    @hospital = Hospital.find params[:hospital_id]
+
+    @patient = @hospital.patients.new(patient_params)
+      respond_to do |format|
+        if @patient.save
+          format.html { redirect_to hospital_path(@hospital), notice: 'Subject now under our control..' }
+        else
+          format.html { render :new }
+        end
+      end
+  end
+
+  def edit
+    @hospital = Hospital.find params[:hospital_id]
+  end
+
+  def update
+    @hospital = Hospital.find params[:hospital_id]
+    if @patient.update_attributes patient_params
+      redirect_to hospitals_path  
+    else
+      render :edit
+    end
+  end
+
   def destroy
+    @hospital = Hospital.find params[:hospital_id]
     @patient.delete
-    redirect_to hospital_path(@hospital)
+    redirect_to hospitals_path
   end
-  def to_billing
-    @patient.to_billing!
-    redirect_to hospital_path(@hospital)
+
+  def discharge
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.discharge!
+    redirect_to hospital_patient_path
   end
-  def to_waiting
-    @patient.to_waiting!
-    redirect_to hospital_path(@hospital)
+
+  def check
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.check!
+    redirect_to hospital_patient_path
   end
-  def see_doctor
-    @patient.see_doctor!
-    redirect_to hospital_path(@hospital)
+
+  def wait
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.wait!
+    redirect_to hospital_patient_path
   end
-  def to_xray
-    @patient.to_xray!
-    redirect_to hospital_path(@hospital)
+
+  def xray
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.xray!
+    redirect_to hospital_patient_path
   end
-  def to_surgery
-    @patient.to_surgery!
-    redirect_to hospital_path(@hospital)
+
+  def scalpel
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.scalpel!
+    redirect_to hospital_patient_path
   end
-  def leave
-    @patient.leave!
-    redirect_to hospital_path(@hospital)
+
+  def charge
+    @hospital = Hospital.find params[:hospital_id]
+    @patient.charge!
+    redirect_to hospital_patient_path
   end
 
   def create_doctor
@@ -63,28 +110,26 @@ class PatientsController < ApplicationController
   end
 
   def delete_doctor
-    p params
     @hospital = Hospital.find params[:hospital_id]
     @patient = @hospital.patients.find params[:id]
     @doctor = @patient.doctors.find params[:doctor_id]
     @doctor.delete
     redirect_to hospital_patient_path(@hospital, @patient)
   end
+    
 
-private
+  private
+
   def find_patient
     @patient = Patient.find params[:id]
   end
 
-  def find_hospital
-    @hospital = Hospital.find params[:hospital_id]
+  def patient_params
+    params.require(:patient).permit(:first_name, :last_name, :dob, :reason, :gender)
   end
 
-  def patient_params
-    params.require(:patient).permit(:name, :gender, :birth, :diagnosis)
-  end
-  
   def doctor_params
-    params.require(:doctor).permit(:name, :speciality)
+      params.require(:doctor).permit(:dr_name)
   end
+
 end
