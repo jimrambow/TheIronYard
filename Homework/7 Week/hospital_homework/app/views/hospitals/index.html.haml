@@ -1,0 +1,17 @@
+%h1 Jim Rambow Laboratories
+
+
+= button_to "Add a new hospital to the Jim Rambow HealthCare System..", new_hospital_path, class: "hosp_link", method: :get
+%ul.hospital_list
+  - @hospital.each do |hospital|
+    %li
+      %strong
+        = link_to hospital.name, hospital_path(hospital)
+      = hospital.description
+      |
+      = link_to "Edit", edit_hospital_path(hospital)
+      |
+      = link_to "Delete", hospital_path(hospital), method: :delete
+
+%br
+= link_to "Back", root_path

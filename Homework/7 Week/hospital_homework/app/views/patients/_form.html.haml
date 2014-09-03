@@ -1,0 +1,42 @@
+= form_for [@hospital, @patient] do |f|
+  - if f.object.errors.messages.length > 0
+    - f.object.errors.messages.inspect
+    %br/
+    - f.object.errors.messages.each do |key, value|
+      - value.each do |message|
+        = key.capitalize
+        = message
+        %br/
+
+  = f.label :first_name
+  = f.text_field :first_name
+  %br/
+
+  = f.label :last_name
+  = f.text_field :last_name
+  %br/
+
+  = f.label :dob
+  = f.date_select :dob,                   |
+    :start_year => Date.today.year - 150, |
+    :end_year => Date.today.year + 150,   |
+    :order => [:month, :day, :year]       |
+  %br/
+
+  = f.label :reason
+  %br/
+
+  = f.text_area :reason
+  %br/
+
+  = f.label :gender
+  = f.radio_button :gender, 'Male', :checked => true
+  = label :male, 'Male'
+  = f.radio_button :gender, 'Female'
+  = label :gender, 'Female'
+  %br/
+
+  = f.submit class: "submit_button", disabled: 'disabled'
+
+
+

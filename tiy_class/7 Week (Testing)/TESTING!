@@ -1,0 +1,97 @@
+TESTING!
+
+TESTING IS ENTIRELY LOCAL, YOU CANNOT BRING IN say... A FEATURE LIST FOR CARS!!!!! Keep tests simple, try not to use if checks if possible.
+
+Nick doesnt like the gem for testing (testing unit) so we will use:
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
+
+bundle install afterwards
+
+rails generate rspec:install
+
+now we have two testing frameworks
+get rid of old framework rm -rf /Test
+
+manually create files with the name of the model_spec.rb
+
+go into .rspec folder and remove warnings!
+
+rspec in terminal runs tests
+
+can test any method in models
+
+all of our code blocks will be written with an "it" codeblock
+it(parameters)
+expect 
+
+example of code block:
+it "Should return the full name of a car object" do
+  new_car = Car.new({
+  make: "Chrysler"
+  model: "Town and Coutry"
+  year: 2014
+  })
+  expect(new_car.full_name).to eq("Chrysler - Town and Country - 2014") (to equal)
+end
+
+We can do this for things it doesnt want the program to do too!
+
+it "Should not return the full name of a car object" do
+  new_car = Car.new({
+  make: "Chrysler"
+  model: "Town and Coutry"
+  year: 2014
+  })
+  expect(new_car.full_name).not_to include("Dodge") (does it not include what im looking expecting)
+  expect(new_car.full_name).not_to be("")
+end
+
+
+
+So you can write a test for things we want to happen and what we are expecting and what we dont want to happen or dont want to have happen, such as having feature cost greater than 0 when we have no features.
+
+subject do
+
+Let
+
+Helper tests
+
+still use it block
+still use expect
+
+testing to_money
+
+it "should convert decimals to money" do
+    expect(helper.to_money(2.23)).to eq("$2.23")
+  end
+
+it "should convert decimals to money" do
+    expect(helper.to_money(10)).to eq("$10.00")
+  end
+
+it "should convert decimals to money" do
+    expect(helper.to_money(10.328147328147832194)).to eq("$10.33")
+end
+  
+it "should convert decimals to money and not be negative" do
+    expect(helper.to_money(10.328147328147832194)).not_to include("-")
+end
+
+it "should convert decimals to money and return a string" do
+    expect(helper.to_money(10.328147328147832194).class).not_to eq(Float)
+    expect(helper.to_money(10.328147328147832194).class).not_to be(Integer)
+end
+
+BE will compare entire objects
+EQ will compare it to equality operator
+
+
+TDD
+Test Driven Development
+Would write all the test files before writing your code.
+
+We do BDD
+Behavioral Driven Development

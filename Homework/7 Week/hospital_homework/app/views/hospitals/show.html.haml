@@ -1,0 +1,68 @@
+%h1 Show Hospital
+%strong
+  Name:
+= @hospital.name
+%br
+
+%strong
+  Description
+= @hospital.description
+%br
+
+= button_to "Check in a new test sub...Patient", new_hospital_patient_path(@hospital), method: :get
+%br
+
+%ul.patients
+%br
+
+= text_field_tag '', '', class: "patient_search"
+= button_to "Search patients in hospitals.", 'javascript:void(0);', class: "search_patients", method: :get
+%br
+
+%ul.search_list
+%br
+
+%strong
+  Specime....I mean Patients!
+%br
+
+%ul.patient_list
+- group_of_patients = 0
+- Patient.all.each_slice(5) do |patient_group|
+  - group_of_patients += 1
+  - patient_group.each do |patient|
+    %li{class: "group_#{group_of_patients} #{'hidden' if group_of_patients >= 2} patient_page" }
+      = link_to "#{patient.first_name} #{patient.last_name}", hospital_patient_path(@hospital, patient)
+      |
+      = link_to "Edit", edit_hospital_patient_path(@hospital, patient)
+      |
+      = link_to "Delete", hospital_patient_path(@hospital, patient), method: :delete
+%br
+
+- group_of_patients.times do |x|
+  |
+  = link_to x + 1, "javascript:void(0);", class: "page_number"
+%br
+
+
+= form_for @doctor, url: create_doctor_hospital_path(@hospital) do |f|
+  = f.label :dr_name, "Add Doctor to Hospital"
+  = f.text_field :dr_name
+  %br
+  = f.submit "Submit", class: "submit_button", disabled: 'disabled'
+%br
+
+%strong
+  Doctors
+%ul.doctor_list
+  - @hospital.doctors.each do |doctor|
+    - if doctor.dr_name
+      %li
+        = doctor.dr_name
+        = link_to "|Delete Doctor|", delete_doctor_hospital_path(@hospital, doctor_id: doctor.id), method: :delete
+
+
+
+%br
+
+= link_to "Back", hospitals_path, method: :get

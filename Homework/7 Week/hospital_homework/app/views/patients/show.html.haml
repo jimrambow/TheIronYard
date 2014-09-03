@@ -1,0 +1,67 @@
+%p
+  %strong Name:
+  = @patient.first_name
+  = @patient.last_name
+%p
+  %strong DOB:
+  = @patient.dob
+%p
+  %strong Reason:
+  = @patient.reason
+%p
+  %strong Gender:
+  = @patient.gender
+%br
+  _________________________
+%br
+  = @patient.workflow_state
+%br
+  _________________________
+%br
+
+
+.workflow_state
+  - if @patient.workflow_state != "Leaving"
+    = link_to "Waiting |", wait_hospital_patient_path(@hospital, @patient), method: :put, class: "wait"
+
+    = link_to "Xray |", xray_hospital_patient_path(@hospital, @patient), method: :put, class: "xray"
+
+    = link_to "Checkup |", check_hospital_patient_path(@hospital, @patient), method: :put, class: "checkup"
+
+    = link_to "Surgery |", scalpel_hospital_patient_path(@hospital, @patient), method: :put, class: "surgery"
+
+    = link_to "Pay Your Bill |", charge_hospital_patient_path(@hospital, @patient), method: :put, class: "pay"
+
+    = link_to "Leaving |", discharge_hospital_patient_path(@hospital, @patient), method: :put, class: "leave"
+
+%ul
+  - @patient.doctors.each do |doctor|
+    - if doctor.dr_name
+      %li
+        = doctor.dr_name
+        = link_to "[Delete]", delete_doctor_hospital_patient_path(@hospital, @patient, doctor_id: doctor.id), method: :delete
+
+= form_for @doctor, url: create_doctor_hospital_patient_path(@hospital, @patient) do |f|
+  = f.label :dr_name, "Assign Doctor to Patient"
+  = f.text_field :dr_name
+  %br
+  = f.submit class: "submit_btn", disabled: 'disabled'
+%br
+___________________________
+%br
+= button_to "Prescribe Medication for Patient",
+  new_hospital_patient_medication_path(@hospital, @patient), method: :get
+%br
+
+%ul
+  - @patient.medications.each do |medication|
+    %li
+      = link_to "#{medication.name}", hospital_patient_medication_path(@hospital, @patient, medication)
+      |
+      = link_to "Edit", edit_hospital_patient_medication_path(@hospital, @patient, medication)
+      |
+      = link_to "Delete", hospital_patient_medication_path(@hospital, @patient, medication), method: :delete
+
+
+%br
+= link_to 'Back', hospitals_path
