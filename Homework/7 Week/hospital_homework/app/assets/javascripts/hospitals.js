@@ -3,7 +3,7 @@ $(document).ready(function() {
 $(".notice").fadeOut(3000);
 
 $(".notice").on( function() {
-    $(".notice").fadeOut(3000);
+  $(".notice").fadeOut(3000);
 })
 
 $("form > input").keyup( function() {

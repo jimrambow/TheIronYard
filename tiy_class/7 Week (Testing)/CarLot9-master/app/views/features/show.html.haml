@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @feature.name
+%p
+  %b Cost:
+  = @feature.cost
+%p
+  %b Description:
+  = @feature.description
+%p
+  %strong Cars
+  %ul
+    - @feature.cars.each do |car|
+      %li
+        = car.make
+        |
+        = car.model
+
+
+= link_to 'Edit', edit_feature_path(@feature)
+\|
+= link_to 'Back', features_path
