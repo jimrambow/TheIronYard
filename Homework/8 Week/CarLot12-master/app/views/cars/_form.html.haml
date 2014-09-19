@@ -1,0 +1,35 @@
+New car for 
+= @dealership.name
+= form_for [@dealership, @car], remote: true do |f|
+  - if @car.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@car.errors.count, "error")} prohibited this car from being saved:"
+      %ul
+        - @car.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :make
+    = f.text_field :make
+  .field
+    = f.label :model
+    = f.text_field :model
+  .field
+    = f.label :year
+    = f.number_field :year
+  .field
+    = f.label :base_cost
+    = f.number_field :base_cost, :step => 0.01
+  .field
+    %ul
+      - @features.each do |feature|
+        %li
+          / = f.check_box 'car[feature_ids][]'
+          = check_box_tag 'car[feature_ids][]', feature.id, @car.features.include?(feature) 
+          = feature.name
+          |
+          = feature.cost
+          |
+          = feature.description
+  .actions
+    = f.submit 'Save'

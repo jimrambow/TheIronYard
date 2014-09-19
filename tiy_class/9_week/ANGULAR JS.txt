@@ -1,0 +1,36 @@
+ANGULAR JS
+
+Theres backbone.js 
+Ember.js
+and Angular.js
+
+
+start new project
+bundle install
+add angular js to vendor js file
+add angular routes as new file under vendor
+
+GET RID OF ALL TURBOLINKS
+
+make three new files under apps/assests/javascript 
+these are controllers
+directories and services
+
+Then add a folder in assests called templates.
+
+in welcome.js
+
+var Cards = angular.module("cards", )
+
+inside of application views add 
+
+html{:lang => "en", ng: { app: "Cards"}}
+
+THen in Javascripts controllers we are making a new file called indexCtrl.js
+
+var IndexCtrl = function($scope) {
+  $scrope.title = 'cards';
+}
+
+
+http://underscorejs.org/

@@ -1,0 +1,47 @@
+%div{ ng: {controller: "IndexCtrl"}}
+  %h1
+    {{ title }}
+
+  %div
+    {{ addition }}
+
+  %div.col-xs-6
+    %label Title
+    %input{ type: "text", ng: {model: 'cardTitle'} }
+    %br
+    %label Content
+    %textarea{ ng: {model: 'content'} }
+    %br
+    %label To:
+    %input{ type: "text", ng: {model: 'to'} }
+    %br
+    %label From:
+    %input{ type: "text", ng: {model: 'from'} }
+    / I am creating a click event that goes to the method inside of your IndexCtrl.
+    %a.btn.btn-primary{ng: { click: 'generateCard()' }} Generate Card
+  .greeting_card.col-xs-6{style: "background-color: green;"}
+    {{ cardContent }}
+    {{ cardContent.title }}
+    {{ cardContent.content }}
+    {{ cardContent.to }}
+    {{ cardContent.from }}
+
+
+  %marquee {{ calendar.name }}  
+  
+  %ul.col-xs-12{style: "margin-top:15px;", ng: {repeat: "day in calendar.days"}}
+    %li{{ ng: { click: "showNewForm($index)" } }}
+      {{ day.name }}
+      / <ul ng-repeat="" ng-click="">
+      %ul{ ng: { repeat: 'event in day.events' }}
+        %li
+          {{ event.name }}
+          {{ event.description }}
+      %div{{ng: { show: "day.showForm"} }}
+        %label Event Name
+        %input{ng: { model: "calendarEvent.name"}}
+        %label Event Description
+        %input{ng: { model: "calendarEvent.description"}}
+        %a.btn.btn-primary{ ng: { click: "addEvent($index)"}} Add Event
+
+

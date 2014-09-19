@@ -1,0 +1,10 @@
+%strong
+  Current State
+= @car.workflow_state
+%br
+- if @car.workflow_state != "sold"
+  = link_to "Sell!", 'javascript:void(0);', class: 'sell_car', state_path: sell_car_dealership_car_path(@dealership, @car)
+- if !['reserved', 'sold'].include?(@car.workflow_state)
+  = link_to "Reserve!", 'javascript:void(0);', class: 'reserve_car', state_path: reserve_dealership_car_path(@dealership, @car)
+- if !['for_sale', 'sold'].include?(@car.workflow_state)
+  = link_to "Reneg!", 'javascript:void(0);', class: 'reneg_car', state_path: reneg_dealership_car_path(@dealership, @car)
