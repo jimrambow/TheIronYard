@@ -1,8 +1,0 @@
-Angular Front end Notes
-
-bower requires node and is a good node package manager.
-
-<body ng-app="ng"Rails">
-<div class="container" ng-view></div>
-
-Service we will be using is factory and a service is your model and how you interact with that data
