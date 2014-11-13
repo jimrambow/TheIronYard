@@ -1,0 +1,20 @@
+%h1 Dealerships
+
+= link_to "Create Dealership", new_dealership_path
+- markers = ''
+%ul
+  - @dealerships.each do |dealership|
+    %li
+      %strong
+        = link_to dealership.name, dealership_path(dealership)
+      = dealership.description
+      |
+      = link_to "Edit", edit_dealership_path(dealership)
+      |
+      = link_to "Delete", dealership_path(dealership), method: :delete
+      - markers << "#{dealership.latitude}%2C#{dealership.longitude}&"
+= link_to "Back", root_path
+
+= image_tag "http://maps.google.com/maps/api/staticmap?size=1000x1000&sensor=false&markers=#{markers}"
+
+

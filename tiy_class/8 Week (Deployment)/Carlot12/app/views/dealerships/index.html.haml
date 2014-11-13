@@ -1,0 +1,29 @@
+.container
+  .row
+    .col-xs-6
+      %h1 Dealerships
+
+      = link_to "Create Dealership", new_dealership_path
+      - markers = ''
+      %ul
+        - @dealerships.each do |dealership|
+          %li
+            %strong
+              = link_to dealership.name, 'javascript:void(0);', class: 'dealership_index_links', dealership_path: dealership_path(dealership)
+              / dealership_path(dealership)
+            = dealership.description
+            |
+            = link_to "Edit", edit_dealership_path(dealership)
+            |
+            = link_to "Delete", dealership_path(dealership), method: :delete
+            - markers << "#{dealership.latitude}%2C#{dealership.longitude}&"
+      = link_to "Back", root_path
+
+      / = image_tag "http://maps.google.com/maps/api/staticmap?size=1000x1000&sensor=false&markers=#{markers}"
+      %ul
+        - ['nbucciarelli', 'reynoldsball', 'slwaller', 'lanceorechovesky', 'jvh1979theironyard', 'jgkingston', 'jimrambow', 'belindahare', 'gtlaserbeast'].each do |avatar|
+          %li= link_to avatar, 'javascript:void(0);', class: 'avatar_links', avatar_string: avatar
+    .col-xs-6.dealership_show_frame
+      WE are going to render some dealership show pages
+
+

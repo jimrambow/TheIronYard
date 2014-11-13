@@ -1,0 +1,4 @@
+<% @cars.each do |car| %>
+  $("ul.cars").append("<%= escape_javascript(render('cars/car_partial', bens_car: car )) %>")
+<% end %>
+

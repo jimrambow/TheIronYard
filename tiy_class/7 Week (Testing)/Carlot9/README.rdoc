@@ -1,0 +1,19 @@
+gem install html2haml
+
+for file in app/views/**/*.erb; do html2haml -e $file ${file%erb}haml && rm $file; done
+
+- helper files
+- model methods
+- user authentication (devise)
+- starting asset pipeline
+
+Command + shift + 4 (then select area) - Screenshot a select area
+Command + shift + 3 - Screenshot entire screen
+
+Application.rb
+  config.assets.paths << "#{Rails}/vendor/fonts"
+
+# To fix bootstrap errors - fix the glyphicons
+bootstrap.css
+../fonts/glyphicons-halflings-regular.eot
+/assets/glyphicons-halflings-regular.eot

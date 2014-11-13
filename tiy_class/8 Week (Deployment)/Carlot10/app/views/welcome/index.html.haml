@@ -1,0 +1,113 @@
+%div.row
+  %div.col-xs-4{style: "background-color:orange;"}
+    Hey Man
+    dsaf
+    dsaf
+    dsaf
+    dsafdas
+    fdas
+    fdsa
+    f
+    %br
+    fdsafdsa
+    fds
+    afdsa
+    %br
+  %div.col-xs-4{style: "background-color:blue;"}
+    Hey Dude
+    %br
+    %br
+    fdsafdsa
+  %div.col-xs-6.col-xs-offset-3{style: "background-color:red;"}
+    Hey Third Dude
+  %div.col-xs-7{style: "background-color:black;"}
+    Hey Third Dude
+
+
+%br
+%div.row
+  %div.col-xs-6
+    Car 1
+    = image_tag 'ferrari_gto.jpeg', class: "car_image image_1"
+  %div.col-xs-6
+    Car 2
+    = image_tag 'cars/ford_windstar.jpg', class: "car_image image_2"
+  %div.col-xs-6
+    = link_to "Hide Image 1", "javascript:void(0);", class: "hide_image_1"
+    = link_to "Show Image 1", "javascript:void(0);", class: "show_image_1"
+    / %a{href: "/asdf "} Hide Image 1
+  %div.col-xs-6
+    = link_to "Hide Image 2", "javascript:void(0);", class: "hide_image_2"
+    = link_to "Show Image 2", "javascript:void(0);", class: "show_image_2"
+  %div.col-xs-6
+    = link_to "Toggle All Images", "javascript:void(0);", class: "toggle_images"
+    = link_to "Toggle Images With Logic", "javascript:void(0);", class: "toggle_images_with_logic"
+
+%div.item#asdf
+  Find me in app/views/welcome/index.html.haml
+  %br
+  = some_helper_method
+  = text_field_tag '', '', class: "student_name"
+  = link_to "Add Student", 'javascript:void(0);', class: "btn btn-sm btn-danger add_student"
+
+  %ul.fruit
+    %li
+      Banana
+    %li.apple
+      Apple
+      = select_tag '', options_for_select(['Fuji', 'Macintosh', 'Crab', 'Granny Smith']), class: "apple_select hidden"
+      / %ul
+      /   %li
+      /     Fuji
+      /   %li
+      /     Macintosh
+      /   %li
+      /     Crab
+      /   %li
+      /     Granny Smith
+    %li.oranges
+      Orange
+      %ul
+        %li Naval
+        %li Blood
+        %li Some other orange
+    %li
+      Sour Patch Kids
+  %br
+  %br
+  =@hello_world
+  - if 1+1==2
+    Some text
+  - 10.times do |x|
+    asdf
+    = x
+
+- group_number_total = 0
+%ul
+  - Car.all.each_slice(5) do |car_group|
+    / = car_group.length.inspect
+    - group_number_total += 1
+    / = group_number_total
+    - car_group.each do |car|    
+      %li{class: "#{'hidden' if group_number_total >= 2} group_#{group_number_total} car_list"}
+        = car.make
+        |
+        = car.model
+- group_number_total.times do |x|
+  = link_to x + 1, "javascript:void(0);", class: "new_page"
+  |
+
+
+
+= link_to "Dealerships", dealerships_path, class: "btn btn-sm btn-primary"
+= link_to "Features", features_path, class: "btn btn-sm btn-default"
+%br
+
+= link_to "Get Cars", 'javascript:void(0);', class: "get_cars btn btn-lg btn-success"
+%ul.cars
+
+
+%br
+= text_field_tag '', '', class: "car_search"
+= link_to "Search Cars", 'javascript:void(0);', class: "search_cars btn btn-lg btn-primary"
+%ul.search_list

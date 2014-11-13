@@ -1,0 +1,7 @@
+%li
+  = bens_car.make
+  |
+  = bens_car.model
+  |
+  / = bens_car.dealership
+  = link_to 'Click here', dealership_car_path(bens_car.dealership, bens_car)
